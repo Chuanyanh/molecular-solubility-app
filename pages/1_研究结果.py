@@ -105,7 +105,7 @@ def plot_style(fig, title=None):
         paper_bgcolor="rgba(0,0,0,0)",
         plot_bgcolor="#101e30",
         font=dict(color="#edf5ff", size=16),
-        margin=dict(l=20, r=20, t=50, b=45),
+        margin=dict(l=110, r=20, t=60, b=60),
         legend=dict(
             orientation="h",
             y=1.1,
@@ -122,7 +122,11 @@ def plot_style(fig, title=None):
     fig.update_yaxes(
         gridcolor="#294058",
         tickfont=dict(color="#edf5ff", size=15),
-        title=dict(font=dict(color="#edf5ff", size=16))
+                automargin=True,
+        title=dict(
+            font=dict(color="#edf5ff", size=16),
+            standoff=30
+        )
     )
     fig.update_traces(
         error_y=dict(color="#edf5ff"),
