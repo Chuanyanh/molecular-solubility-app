@@ -1,0 +1,10 @@
+representation,model,MAE_mean,MAE_std,RMSE_mean,R2_mean,source,source_cell_1_based
+Descriptors,RandomForest,0.591,0.062,0.79,0.837,01_explore_ESOL-2.ipynb,71
+Combined,RandomForest,0.593,0.061,0.804,0.831,01_explore_ESOL-2.ipynb,71
+Descriptors,GradientBoosting,0.594,0.057,0.778,0.842,01_explore_ESOL-2.ipynb,71
+Combined,GradientBoosting,0.6,0.046,0.792,0.839,01_explore_ESOL-2.ipynb,71
+Descriptors,Ridge,0.786,0.078,1.015,0.742,01_explore_ESOL-2.ipynb,71
+Morgan,GradientBoosting,1.324,0.218,1.684,0.241,01_explore_ESOL-2.ipynb,71
+Morgan,RandomForest,1.35,0.314,1.732,0.124,01_explore_ESOL-2.ipynb,71
+Combined,Ridge,1.465,0.138,2.096,-0.16,01_explore_ESOL-2.ipynb,71
+Morgan,Ridge,2.27,0.276,3.031,-1.571,01_explore_ESOL-2.ipynb,71

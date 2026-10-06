@@ -1,0 +1,5 @@
+model,train_MAE_mean,val_MAE_mean,val_MAE_std,val_RMSE_mean,val_R2_mean,source,source_cell_1_based
+RandomForest,0.265,0.591,0.062,0.79,0.837,01_explore_ESOL-2.ipynb,70
+GradientBoosting,0.377,0.594,0.057,0.778,0.842,01_explore_ESOL-2.ipynb,70
+Ridge,0.74,0.786,0.078,1.015,0.742,01_explore_ESOL-2.ipynb,70
+Dummy,1.647,1.698,0.377,2.101,-0.023,01_explore_ESOL-2.ipynb,70

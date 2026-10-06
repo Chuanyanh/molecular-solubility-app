@@ -1,0 +1,6 @@
+fold,Dummy,GradientBoosting,RandomForest,Ridge,source,source_cell_1_based
+1,1.163,0.615,0.641,0.668,01_explore_ESOL-2.ipynb,70
+2,2.191,0.565,0.552,0.778,01_explore_ESOL-2.ipynb,70
+3,1.566,0.535,0.515,0.837,01_explore_ESOL-2.ipynb,70
+4,1.726,0.572,0.582,0.776,01_explore_ESOL-2.ipynb,70
+5,1.844,0.682,0.664,0.872,01_explore_ESOL-2.ipynb,70

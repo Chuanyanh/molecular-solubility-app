@@ -1,0 +1,11 @@
+Unnamed: 0_level_0,molecule_count,MAE,mean_bias,overprediction_fraction
+c1ccncc1,14,1.208,-1.145,0.071
+c1cnc2ncncc2n1,9,1.138,-1.138,0.0
+O=C(OCc1cccc(Oc2ccccc2)c1)C1CC1,7,1.122,0.474,0.714
+c1ccc2cc3ccccc3cc2c1,6,1.017,1.017,1.0
+c1ccccc1,252,0.641,0.033,0.575
+O=C1CN=C(c2ccccc2)c2ccccc2N1,6,0.635,-0.061,0.5
+c1ccc(-c2ccccc2)cc1,39,0.623,0.259,0.59
+O=C1C=CC2C(=C1)CCC1C3CCCC3CCC21,9,0.595,0.576,0.889
+c1cncnc1,5,0.584,-0.091,0.6
+c1ccc2ncccc2c1,5,0.468,-0.189,0.6

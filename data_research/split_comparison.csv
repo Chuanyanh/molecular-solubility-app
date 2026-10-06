@@ -1,0 +1,7 @@
+split,model,train_count,test_count,MAE,RMSE,R2,source_cell_1_based,source
+random,Dummy,884,222,1.689,2.176,0.0,23,01_explore_ESOL-2.ipynb
+random,Ridge,884,222,0.771,0.982,0.796,24,01_explore_ESOL-2.ipynb
+random,RandomForest,884,222,0.567,0.793,0.867,31,01_explore_ESOL-2.ipynb
+scaffold,Dummy,920,186,1.711,2.16,-0.006,29,01_explore_ESOL-2.ipynb
+scaffold,Ridge,920,186,0.856,1.059,0.758,29,01_explore_ESOL-2.ipynb
+scaffold,RandomForest,920,186,0.597,0.806,0.86,30,01_explore_ESOL-2.ipynb
