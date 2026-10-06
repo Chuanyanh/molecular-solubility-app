@@ -18,6 +18,26 @@ h1,h2,h3 {color:#eff7ff !important;}
 [data-testid="stCaptionContainer"] {color:#b5c8d9;}
 [data-testid="stMetric"] {background:#132237;border:1px solid #294058;border-radius:16px;padding:18px;}
 [data-testid="stMetricValue"] {color:#67e4dc;}
+button[data-baseweb="tab"],
+button[data-baseweb="tab"] p {
+    color: #edf5ff !important;
+    font-size: 17px !important;
+    font-weight: 600 !important;
+}
+button[data-baseweb="tab"] {
+    background-color: #132237 !important;
+    border-radius: 8px 8px 0 0;
+    padding: 12px 18px !important;
+}
+button[data-baseweb="tab"][aria-selected="true"],
+button[data-baseweb="tab"][aria-selected="true"] p {
+    color: #67e4dc !important;
+    background-color: #20364d !important;
+}
+[data-testid="stCaptionContainer"],
+[data-testid="stCaptionContainer"] p {
+    color: #c4d4e5 !important;
+}
 </style>""", unsafe_allow_html=True)
 st.title("小分子水溶解度 · 研究结果")
 st.write("研究问题：同一模型遇到训练时未见过的分子骨架，预测表现如何变化？")
