@@ -23,7 +23,7 @@ def render_gnn_research(data, plot_style, show_table):
     fig.add_bar(x=summary.dataset,y=summary.MAE_mean,error_y=dict(type='data',array=summary.MAE_std),name='GINE · 三个种子平均',marker_color='#67e4dc')
     fig.add_bar(x=rf.dataset,y=rf.MAE,name='RF · 固定种子 42',marker_color='#b29aff')
     fig.update_layout(barmode='group',yaxis_title='MAE · logS（越低越好）')
-      fig = plot_style(fig)
+    fig = plot_style(fig)
     fig.update_layout(
         title=dict(text="GINE 与随机森林的误差比较"),
         font=dict(color="#edf5ff", size=16),
