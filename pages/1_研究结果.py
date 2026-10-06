@@ -144,6 +144,9 @@ with tabs[0]:
     st.caption("来源：01_explore_ESOL-2.ipynb 第 22–31 个单元格的代码和已保存输出。当前随机／骨架留出比较未包含普通梯度提升模型；其训练集内部交叉验证结果在下一页签。")
 
 with tabs[1]:
+    from gnn_research import render_gnn_research
+    render_gnn_research(DATA, plot_style, show_table)
+
     st.subheader("训练集内部：四种模型使用同一五折骨架分组")
     st.caption("仅使用原 920 条训练记录。以下 MAE、RMSE、R² 为各折指标的算术平均；MAE 标准差为样本标准差，不是置信区间。")
     show_table(cv.drop(columns=["source","source_cell_1_based"]).rename(columns={
@@ -187,7 +190,7 @@ with tabs[2]:
     fig.update_layout(yaxis_title="覆盖率 · %",yaxis_range=[0,100])
     st.plotly_chart(plot_style(fig),width="stretch",key="coverage_plot")
     st.write("留出集实际覆盖率约 86.0%，外部约 79.6%，均低于 90% 目标；不应解释为每个输入分子有 90% 的保证。骨架划分和跨数据集变化也会影响区间校准的适用性。")
-    st.caption("Notebook 的训练集内部五折校准覆盖率 92.4% 属于另一组实验；本页没有用它替代留出集或外部结果。GNN 完整外部评价表尚未上传，此页暂不报告其整体指标。结构去重也不等于已确认所有原始实验来源相互独立。")
+    st.caption("Notebook 的训练集内部五折校准覆盖率 92.4% 属于另一组实验；本页没有用它替代留出集或外部结果。GINE 三个种子的点预测评价见“模型与分子表示”；这些结果不是 GNN 预测区间。结构去重也不等于已确认所有原始实验来源相互独立。")
 
 with tabs[3]:
     st.subheader("留出测试集：高误差骨架")
@@ -210,7 +213,7 @@ with tabs[4]:
     st.write("五折指标的简单平均与将所有折外预测合并后计算的指标不同。当前五折 RF 平均 MAE 为 0.591，Notebook 合并折外 MAE 为 0.595，两者需要分别解释。")
     st.write("原 Notebook 环境：Python 3.9.12、scikit-learn 1.0.2、RDKit 2025.9.2；云端网页使用的环境不同，展示旧实验时保留其来源。02 notebook 为预测示例，示例分子不计入独立模型测试指标。")
     st.subheader("尚待补齐的研究证据")
-    st.markdown("- 普通梯度提升的随机／骨架留出比较。\n- 当前部署 RF/GNN 与外部评价的模型版本核对。\n- GNN 完整外部指标及多个随机种子的结果。\n- 原始实验条件与来源独立性核查。\n- 最终研究报告、海报和英文演讲材料。")
+    st.markdown("- 普通梯度提升的随机／骨架留出比较。\n- 当前部署 RF/GNN 与外部评价的模型版本核对。\n- 原始实验条件与来源独立性核查。\n- 最终研究报告、海报和英文演讲材料。")
     buffer=io.BytesIO()
     with zipfile.ZipFile(buffer,"w",zipfile.ZIP_DEFLATED) as archive:
         for path in sorted(DATA.glob("*.csv")): archive.write(path,arcname="data_research/"+path.name)
