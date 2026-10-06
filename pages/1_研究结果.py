@@ -100,11 +100,34 @@ def show_table(table):
 
 
 def plot_style(fig, title=None):
-    fig.update_layout(title=title, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="#101e30",
-                      font=dict(color="#e8eef7"), margin=dict(l=20,r=20,t=50,b=45),
-                      legend=dict(orientation="h", y=1.1))
-    fig.update_xaxes(gridcolor="#294058")
-    fig.update_yaxes(gridcolor="#294058")
+    fig.update_layout(
+        title=dict(text=title or ""),
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="#101e30",
+        font=dict(color="#edf5ff", size=16),
+        margin=dict(l=20, r=20, t=50, b=45),
+        legend=dict(
+            orientation="h",
+            y=1.1,
+            font=dict(color="#edf5ff", size=16),
+            bgcolor="#20364d",
+            title=dict(text="")
+        )
+    )
+    fig.update_xaxes(
+        gridcolor="#294058",
+        tickfont=dict(color="#edf5ff", size=15),
+        title=dict(font=dict(color="#edf5ff", size=16))
+    )
+    fig.update_yaxes(
+        gridcolor="#294058",
+        tickfont=dict(color="#edf5ff", size=15),
+        title=dict(font=dict(color="#edf5ff", size=16))
+    )
+    fig.update_traces(
+        error_y=dict(color="#edf5ff"),
+        selector=dict(type="bar")
+    )
     return fig
 
 
@@ -139,7 +162,7 @@ with tabs[0]:
         part=splits[splits.split==split]
         fig.add_bar(x=part.model,y=part.MAE,name=label,marker_color=color)
     fig.update_layout(barmode="group",yaxis_title="MAE · logS（越低越好）")
-    st.plotly_chart(plot_style(fig),width="stretch",key="split_plot")
+    st.plotly_chart(plot_style(fig),width="stretch",theme=None,key="split_plot")
     st.write("随机森林 MAE 从随机划分的 0.567 增至骨架划分的 0.597；岭回归从 0.771 增至 0.856。该结果来自一次固定划分，不足以证明所有新骨架上的性能下降幅度相同。")
     st.caption("来源：01_explore_ESOL-2.ipynb 第 22–31 个单元格的代码和已保存输出。当前随机／骨架留出比较未包含普通梯度提升模型；其训练集内部交叉验证结果在下一页签。")
 
@@ -154,7 +177,7 @@ with tabs[1]:
         "val_MAE_std":"验证 MAE 标准差","val_RMSE_mean":"平均验证 RMSE","val_R2_mean":"平均验证 R²"}))
     fig=go.Figure(go.Bar(x=cv.model,y=cv.val_MAE_mean,error_y=dict(type="data",array=cv.val_MAE_std),marker_color="#67e4dc"))
     fig.update_layout(yaxis_title="五折平均 MAE ± 标准差 · logS")
-    st.plotly_chart(plot_style(fig),width="stretch",key="cv_plot")
+    st.plotly_chart(plot_style(fig),width="stretch",theme=None,key="cv_plot")
     st.write("随机森林与梯度提升的平均 MAE 为 0.591 和 0.594，表现接近；梯度提升的平均 RMSE 略低。当前结果不足以宣称随机森林在所有评价指标上都最好。")
     with st.expander("术语和各折结果"):
         st.write("Dummy：均值基线；Ridge Regression：岭回归；Random Forest（RF）：随机森林；Gradient Boosting：梯度提升。MAE = Mean Absolute Error（平均绝对误差）；RMSE = Root Mean Squared Error（均方根误差）；R² = Coefficient of Determination（决定系数）。")
@@ -179,7 +202,7 @@ with tabs[2]:
     lo=min(external.measured_logS.min(),external.predicted_logS.min());hi=max(external.measured_logS.max(),external.predicted_logS.max())
     fig.add_trace(go.Scatter(x=[lo,hi],y=[lo,hi],mode="lines",line=dict(color="#f5c96a",dash="dash"),name="预测 = 参考"))
     fig.update_layout(xaxis_title="AqSolDB 参考 logS",yaxis_title="文件中 RF 预测 logS",height=450,showlegend=False)
-    st.plotly_chart(plot_style(fig),width="stretch",key="external_parity")
+    st.plotly_chart(plot_style(fig),width="stretch",theme=None,key="external_parity")
     st.subheader("CQR 预测区间：目标与实际覆盖率")
     st.write("CQR = Conformalized Quantile Regression（共形化分位数回归）。覆盖率为参考标签落在区间内的记录比例；区间宽度以 logS 计。")
     show_table(summary.rename(columns={"dataset":"数据集","molecule_count":"记录数","target_coverage":"目标覆盖率",
@@ -188,7 +211,9 @@ with tabs[2]:
     fig.add_bar(x=summary.dataset,y=summary.actual_coverage*100,name="实际覆盖率",marker_color="#67e4dc")
     fig.add_scatter(x=summary.dataset,y=summary.target_coverage*100,mode="lines+markers",name="目标覆盖率",line=dict(color="#f5c96a",dash="dash"))
     fig.update_layout(yaxis_title="覆盖率 · %",yaxis_range=[0,100])
-    st.plotly_chart(plot_style(fig),width="stretch",key="coverage_plot")
+    st.plotly_chart(plot_style(fig),width="stretch",theme=None,key=
+                    
+                   "coverage_plot")
     st.write("留出集实际覆盖率约 86.0%，外部约 79.6%，均低于 90% 目标；不应解释为每个输入分子有 90% 的保证。骨架划分和跨数据集变化也会影响区间校准的适用性。")
     st.caption("Notebook 的训练集内部五折校准覆盖率 92.4% 属于另一组实验；本页没有用它替代留出集或外部结果。GINE 三个种子的点预测评价见“模型与分子表示”；这些结果不是 GNN 预测区间。结构去重也不等于已确认所有原始实验来源相互独立。")
 
