@@ -50,6 +50,22 @@ button[data-baseweb="tab"][aria-selected="true"] p {
 [data-testid="stCaptionContainer"] * {
     color: #c4d4e5 !important;
 }
+/* 左侧导航栏背景 */
+[data-testid="stSidebar"] {
+    background-color: #101e30 !important;
+    border-right: 1px solid #294058;
+}
+
+/* 导航栏文字 */
+[data-testid="stSidebar"] * {
+    color: #edf5ff !important;
+}
+
+/* 当前选中的页面 */
+[data-testid="stSidebarNav"] a[aria-current="page"] {
+    background-color: #20364d !important;
+    border-radius: 8px;
+}
 </style>""", unsafe_allow_html=True)
 st.title("小分子水溶解度 · 研究结果")
 st.write("研究问题：同一模型遇到训练时未见过的分子骨架，预测表现如何变化？")
