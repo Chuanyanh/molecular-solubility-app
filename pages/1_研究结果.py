@@ -38,6 +38,18 @@ button[data-baseweb="tab"][aria-selected="true"] p {
 [data-testid="stCaptionContainer"] p {
     color: #c4d4e5 !important;
 }
+/* 指标卡片上方的标题 */
+[data-testid="stMetricLabel"],
+[data-testid="stMetricLabel"] * {
+    color: #edf5ff !important;
+    font-weight: 600 !important;
+}
+
+/* 页面说明文字 */
+[data-testid="stCaptionContainer"],
+[data-testid="stCaptionContainer"] * {
+    color: #c4d4e5 !important;
+}
 </style>""", unsafe_allow_html=True)
 st.title("小分子水溶解度 · 研究结果")
 st.write("研究问题：同一模型遇到训练时未见过的分子骨架，预测表现如何变化？")
