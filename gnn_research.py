@@ -23,7 +23,34 @@ def render_gnn_research(data, plot_style, show_table):
     fig.add_bar(x=summary.dataset,y=summary.MAE_mean,error_y=dict(type='data',array=summary.MAE_std),name='GINE · 三个种子平均',marker_color='#67e4dc')
     fig.add_bar(x=rf.dataset,y=rf.MAE,name='RF · 固定种子 42',marker_color='#b29aff')
     fig.update_layout(barmode='group',yaxis_title='MAE · logS（越低越好）')
-    st.plotly_chart(plot_style(fig),use_container_width=True,key='gnn_seed_comparison')
+      fig = plot_style(fig)
+    fig.update_layout(
+        title=dict(text="GINE 与随机森林的误差比较"),
+        font=dict(color="#edf5ff", size=16),
+        legend=dict(
+            font=dict(color="#edf5ff", size=16),
+            bgcolor="#20364d",
+            title=dict(text="")
+          )
+    )
+    fig.update_xaxes(
+        tickfont=dict(color="#edf5ff", size=15),
+        title=dict(font=dict(color="#edf5ff", size=16))
+    )
+    fig.update_yaxes(
+        tickfont=dict(color="#edf5ff", size=15),
+        title=dict(font=dict(color="#edf5ff", size=16))
+    )
+    fig.update_traces(
+        error_y=dict(color="#edf5ff"),
+        selector=dict(type="bar")
+    )
+    st.plotly_chart(
+        fig,
+        use_container_width=True,
+        theme=None,
+        key="gnn_seed_comparison"
+    )
     st.caption('MAE = Mean Absolute Error（平均绝对误差）；RMSE = Root Mean Squared Error（均方根误差）；R² 为决定系数。标准差描述三个训练种子的波动，不是置信区间，也不是三个独立测试集。RF 目前只报告一个种子。')
     st.write('GINE 留出平均 MAE 为 0.554，低于 RF 的 0.597；外部平均 MAE 为 0.855，与 RF 的 0.865 接近，但 GINE 平均 RMSE 为 1.252，高于 RF 的 1.177。当前证据不能说明图神经网络在所有指标上都更好。')
     with st.expander('查看三个种子的各次结果与训练设置'):
