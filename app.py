@@ -152,7 +152,31 @@ from rdkit.Chem import rdMolDescriptors
 
 @st.cache_data(ttl=86400, max_entries=256, show_spinner=False)
 def cached_pubchem_search(query):
-    return search_pubchem(query)
+    import time
+
+    query = query.strip()
+    last_error = None
+
+    for attempt in range(3):
+        try:
+            records = search_pubchem(query)
+        except PubChemSearchError as error:
+            last_error = error
+        else:
+            if records:
+                return records
+
+            last_error = PubChemSearchError(
+                "PubChem 本次未返回可用的分子结构。"
+                "这不一定表示数据库没有该物质。"
+                "请核对名称、改用 CID，或再次点击在线查询。"
+                "本次空结果不会缓存。"
+            )
+
+        if attempt < 2:
+            time.sleep(attempt + 1)
+
+    raise last_error
 
 def clear_previous_prediction():
     st.session_state.pop("prediction", None)
