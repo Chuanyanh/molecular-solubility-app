@@ -134,7 +134,22 @@ button[data-baseweb="tab"][aria-selected="true"] {
 .stApp [data-testid="stBaseButton-primary"]:disabled {
     opacity: 0.55 !important;
 }
+/* 左侧导航栏背景 */
+[data-testid="stSidebar"] {
+    background-color: #101e30 !important;
+    border-right: 1px solid #294058;
+}
 
+/* 左侧导航栏文字 */
+[data-testid="stSidebar"] * {
+    color: #edf5ff !important;
+}
+
+/* 当前页面的选中背景 */
+[data-testid="stSidebarNav"] a[aria-current="page"] {
+    background-color: #20364d !important;
+    border-radius: 8px;
+}
 </style>
 <div class="lab-heading">MOLECULAR SOLUBILITY LAB</div>
 """, unsafe_allow_html=True)
