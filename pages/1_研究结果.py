@@ -66,6 +66,25 @@ button[data-baseweb="tab"][aria-selected="true"] p {
     background-color: #20364d !important;
     border-radius: 8px;
 }
+/* 下载按钮：绿色背景 */
+[data-testid="stDownloadButton"] button {
+    background-color: #67e4b0 !important;
+    color: #08251c !important;
+    border: 1px solid #67e4b0 !important;
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+}
+
+/* 下载按钮文字 */
+[data-testid="stDownloadButton"] button * {
+    color: #08251c !important;
+}
+
+/* 鼠标放上去时 */
+[data-testid="stDownloadButton"] button:hover {
+    background-color: #8af0c5 !important;
+    border-color: #8af0c5 !important;
+}
 </style>""", unsafe_allow_html=True)
 st.title("小分子水溶解度 · 研究结果")
 st.write("研究问题：同一模型遇到训练时未见过的分子骨架，预测表现如何变化？")
