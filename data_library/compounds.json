@@ -1,0 +1,417 @@
+[
+  {
+    "id": "aspirin",
+    "name_zh": "阿司匹林",
+    "name_en": "Aspirin",
+    "aliases": [
+      "乙酰水杨酸",
+      "acetylsalicylic acid"
+    ],
+    "smiles": "CC(=O)Oc1ccccc1C(=O)O",
+    "formula": "C9H8O4"
+  },
+  {
+    "id": "ethanol",
+    "name_zh": "乙醇",
+    "name_en": "Ethanol",
+    "aliases": [
+      "酒精",
+      "ethyl alcohol"
+    ],
+    "smiles": "CCO",
+    "formula": "C2H6O"
+  },
+  {
+    "id": "acetone",
+    "name_zh": "丙酮",
+    "name_en": "Acetone",
+    "aliases": [
+      "propanone"
+    ],
+    "smiles": "CC(C)=O",
+    "formula": "C3H6O"
+  },
+  {
+    "id": "acetic-acid",
+    "name_zh": "乙酸",
+    "name_en": "Acetic acid",
+    "aliases": [
+      "醋酸",
+      "ethanoic acid"
+    ],
+    "smiles": "CC(=O)O",
+    "formula": "C2H4O2"
+  },
+  {
+    "id": "phenol",
+    "name_zh": "苯酚",
+    "name_en": "Phenol",
+    "aliases": [
+      "石炭酸"
+    ],
+    "smiles": "Oc1ccccc1",
+    "formula": "C6H6O"
+  },
+  {
+    "id": "benzoic-acid",
+    "name_zh": "苯甲酸",
+    "name_en": "Benzoic acid",
+    "aliases": [
+      "安息香酸"
+    ],
+    "smiles": "O=C(O)c1ccccc1",
+    "formula": "C7H6O2"
+  },
+  {
+    "id": "salicylic-acid",
+    "name_zh": "水杨酸",
+    "name_en": "Salicylic acid",
+    "aliases": [
+      "邻羟基苯甲酸",
+      "2-hydroxybenzoic acid"
+    ],
+    "smiles": "O=C(O)c1ccccc1O",
+    "formula": "C7H6O3"
+  },
+  {
+    "id": "urea",
+    "name_zh": "尿素",
+    "name_en": "Urea",
+    "aliases": [
+      "carbamide"
+    ],
+    "smiles": "NC(N)=O",
+    "formula": "CH4N2O"
+  },
+  {
+    "id": "glycerol",
+    "name_zh": "甘油",
+    "name_en": "Glycerol",
+    "aliases": [
+      "丙三醇",
+      "glycerin"
+    ],
+    "smiles": "OCC(O)CO",
+    "formula": "C3H8O3"
+  },
+  {
+    "id": "ethyl-acetate",
+    "name_zh": "乙酸乙酯",
+    "name_en": "Ethyl acetate",
+    "aliases": [
+      "醋酸乙酯"
+    ],
+    "smiles": "CCOC(C)=O",
+    "formula": "C4H8O2"
+  },
+  {
+    "id": "toluene",
+    "name_zh": "甲苯",
+    "name_en": "Toluene",
+    "aliases": [
+      "methylbenzene"
+    ],
+    "smiles": "Cc1ccccc1",
+    "formula": "C7H8"
+  },
+  {
+    "id": "naphthalene",
+    "name_zh": "萘",
+    "name_en": "Naphthalene",
+    "aliases": [],
+    "smiles": "c1ccc2ccccc2c1",
+    "formula": "C10H8"
+  },
+  {
+    "id": "methanol",
+    "name_zh": "甲醇",
+    "name_en": "Methanol",
+    "aliases": [
+      "木醇"
+    ],
+    "smiles": "CO",
+    "formula": "CH4O",
+    "source": "内置常用物质库"
+  },
+  {
+    "id": "isopropanol",
+    "name_zh": "异丙醇",
+    "name_en": "Isopropanol",
+    "aliases": [
+      "2-丙醇",
+      "isopropyl alcohol"
+    ],
+    "smiles": "CC(O)C",
+    "formula": "C3H8O",
+    "source": "内置常用物质库"
+  },
+  {
+    "id": "1-propanol",
+    "name_zh": "正丙醇",
+    "name_en": "1-Propanol",
+    "aliases": [
+      "丙醇"
+    ],
+    "smiles": "CCCO",
+    "formula": "C3H8O",
+    "source": "内置常用物质库"
+  },
+  {
+    "id": "1-butanol",
+    "name_zh": "正丁醇",
+    "name_en": "1-Butanol",
+    "aliases": [
+      "丁醇"
+    ],
+    "smiles": "CCCCO",
+    "formula": "C4H10O",
+    "source": "内置常用物质库"
+  },
+  {
+    "id": "ethylene-glycol",
+    "name_zh": "乙二醇",
+    "name_en": "Ethylene glycol",
+    "aliases": [
+      "甘醇"
+    ],
+    "smiles": "OCCO",
+    "formula": "C2H6O2",
+    "source": "内置常用物质库"
+  },
+  {
+    "id": "diethyl-ether",
+    "name_zh": "乙醚",
+    "name_en": "Diethyl ether",
+    "aliases": [
+      "二乙醚"
+    ],
+    "smiles": "CCOCC",
+    "formula": "C4H10O",
+    "source": "内置常用物质库"
+  },
+  {
+    "id": "benzene",
+    "name_zh": "苯",
+    "name_en": "Benzene",
+    "aliases": [],
+    "smiles": "c1ccccc1",
+    "formula": "C6H6",
+    "source": "内置常用物质库"
+  },
+  {
+    "id": "ethylbenzene",
+    "name_zh": "乙苯",
+    "name_en": "Ethylbenzene",
+    "aliases": [],
+    "smiles": "CCc1ccccc1",
+    "formula": "C8H10",
+    "source": "内置常用物质库"
+  },
+  {
+    "id": "cyclohexane",
+    "name_zh": "环己烷",
+    "name_en": "Cyclohexane",
+    "aliases": [],
+    "smiles": "C1CCCCC1",
+    "formula": "C6H12",
+    "source": "内置常用物质库"
+  },
+  {
+    "id": "hexane",
+    "name_zh": "正己烷",
+    "name_en": "n-Hexane",
+    "aliases": [
+      "hexane"
+    ],
+    "smiles": "CCCCCC",
+    "formula": "C6H14",
+    "source": "内置常用物质库"
+  },
+  {
+    "id": "heptane",
+    "name_zh": "正庚烷",
+    "name_en": "n-Heptane",
+    "aliases": [
+      "heptane"
+    ],
+    "smiles": "CCCCCCC",
+    "formula": "C7H16",
+    "source": "内置常用物质库"
+  },
+  {
+    "id": "dichloromethane",
+    "name_zh": "二氯甲烷",
+    "name_en": "Dichloromethane",
+    "aliases": [
+      "DCM",
+      "methylene chloride"
+    ],
+    "smiles": "ClCCl",
+    "formula": "CH2Cl2",
+    "source": "内置常用物质库"
+  },
+  {
+    "id": "chloroform",
+    "name_zh": "氯仿",
+    "name_en": "Chloroform",
+    "aliases": [
+      "三氯甲烷"
+    ],
+    "smiles": "ClC(Cl)Cl",
+    "formula": "CHCl3",
+    "source": "内置常用物质库"
+  },
+  {
+    "id": "acetonitrile",
+    "name_zh": "乙腈",
+    "name_en": "Acetonitrile",
+    "aliases": [],
+    "smiles": "CC#N",
+    "formula": "C2H3N",
+    "source": "内置常用物质库"
+  },
+  {
+    "id": "dmso",
+    "name_zh": "二甲基亚砜",
+    "name_en": "Dimethyl sulfoxide",
+    "aliases": [
+      "DMSO"
+    ],
+    "smiles": "CS(C)=O",
+    "formula": "C2H6OS",
+    "source": "内置常用物质库"
+  },
+  {
+    "id": "dmf",
+    "name_zh": "N,N-二甲基甲酰胺",
+    "name_en": "N,N-Dimethylformamide",
+    "aliases": [
+      "二甲基甲酰胺",
+      "DMF"
+    ],
+    "smiles": "CN(C)C=O",
+    "formula": "C3H7NO",
+    "source": "内置常用物质库"
+  },
+  {
+    "id": "thf",
+    "name_zh": "四氢呋喃",
+    "name_en": "Tetrahydrofuran",
+    "aliases": [
+      "THF"
+    ],
+    "smiles": "C1CCOC1",
+    "formula": "C4H8O",
+    "source": "内置常用物质库"
+  },
+  {
+    "id": "pyridine",
+    "name_zh": "吡啶",
+    "name_en": "Pyridine",
+    "aliases": [],
+    "smiles": "c1ccncc1",
+    "formula": "C5H5N",
+    "source": "内置常用物质库"
+  },
+  {
+    "id": "aniline",
+    "name_zh": "苯胺",
+    "name_en": "Aniline",
+    "aliases": [],
+    "smiles": "Nc1ccccc1",
+    "formula": "C6H7N",
+    "source": "内置常用物质库"
+  },
+  {
+    "id": "benzaldehyde",
+    "name_zh": "苯甲醛",
+    "name_en": "Benzaldehyde",
+    "aliases": [],
+    "smiles": "O=Cc1ccccc1",
+    "formula": "C7H6O",
+    "source": "内置常用物质库"
+  },
+  {
+    "id": "acetophenone",
+    "name_zh": "苯乙酮",
+    "name_en": "Acetophenone",
+    "aliases": [],
+    "smiles": "CC(=O)c1ccccc1",
+    "formula": "C8H8O",
+    "source": "内置常用物质库"
+  },
+  {
+    "id": "formic-acid",
+    "name_zh": "甲酸",
+    "name_en": "Formic acid",
+    "aliases": [
+      "蚁酸"
+    ],
+    "smiles": "O=CO",
+    "formula": "CH2O2",
+    "source": "内置常用物质库"
+  },
+  {
+    "id": "oxalic-acid",
+    "name_zh": "草酸",
+    "name_en": "Oxalic acid",
+    "aliases": [
+      "乙二酸"
+    ],
+    "smiles": "O=C(O)C(=O)O",
+    "formula": "C2H2O4",
+    "source": "内置常用物质库"
+  },
+  {
+    "id": "succinic-acid",
+    "name_zh": "丁二酸",
+    "name_en": "Succinic acid",
+    "aliases": [
+      "琥珀酸"
+    ],
+    "smiles": "O=C(O)CCC(=O)O",
+    "formula": "C4H6O4",
+    "source": "内置常用物质库"
+  },
+  {
+    "id": "glycine",
+    "name_zh": "甘氨酸",
+    "name_en": "Glycine",
+    "aliases": [
+      "氨基乙酸"
+    ],
+    "smiles": "NCC(=O)O",
+    "formula": "C2H5NO2",
+    "source": "内置常用物质库"
+  },
+  {
+    "id": "guaiacol",
+    "name_zh": "愈创木酚",
+    "name_en": "Guaiacol",
+    "aliases": [
+      "邻甲氧基苯酚",
+      "2-methoxyphenol"
+    ],
+    "smiles": "COc1ccccc1O",
+    "formula": "C7H8O2",
+    "source": "内置常用物质库"
+  },
+  {
+    "id": "cyclohexanol",
+    "name_zh": "环己醇",
+    "name_en": "Cyclohexanol",
+    "aliases": [],
+    "smiles": "OC1CCCCC1",
+    "formula": "C6H12O",
+    "source": "内置常用物质库"
+  },
+  {
+    "id": "cyclohexanone",
+    "name_zh": "环己酮",
+    "name_en": "Cyclohexanone",
+    "aliases": [],
+    "smiles": "O=C1CCCCC1",
+    "formula": "C6H10O",
+    "source": "内置常用物质库"
+  }
+]
