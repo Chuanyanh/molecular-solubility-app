@@ -426,6 +426,10 @@ if result is not None:
                 "共形化分位数回归）使用单独的分位数模型与校准集生成区间。"
             )
 
+    # EXPERIMENTAL_REFERENCES_V1
+    from experimental_references import render_experimental_references
+    render_experimental_references(result)
+
     st.subheader("结构与适用范围")
     checks = result["checks"]
     st.write(
