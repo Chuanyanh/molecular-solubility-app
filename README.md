@@ -53,3 +53,50 @@ CQR（Conformalized Quantile Regression，共形化分位数回归）区间来�
 ## 验证范围
 
 用户已在 Intel Mac 上运行 RF/GNN/CQR、阿司匹林与法匹拉韦在线查询、三维结构和固体/液体外观。发布整理检查包括语法、文件完整性、40 种结构及分子式、搜索与错误处理、外观回退、3D HTML 生成。云端完整模型运行仍需部署后确认。
+
+## English Overview
+
+# Molecular Solubility Prediction
+
+An interactive application for predicting aqueous molecular
+solubility from SMILES using Random Forest and a GINE graph
+neural network.
+
+## Try the app
+
+https://chuanyanh-solubility.streamlit.app/
+
+## Features
+
+- Single-molecule prediction and molecular visualization
+- Batch prediction with downloadable CSV results
+- Conversion between logS and mg/L
+- Conformalized quantile regression prediction intervals
+- Comparison with manually entered experimental measurements
+- Chemical lookup and research results
+
+## Evaluation
+
+Models were trained on 920 ESOL molecules and evaluated on
+a 186-molecule scaffold holdout.
+
+The deployed GINE model achieved a holdout MAE of 0.547 logS
+and an RMSE of 0.720 logS.
+
+External evaluation used 6,578 filtered AqSolDB records.
+Across three random seeds, GINE achieved a mean external
+MAE of 0.855 logS.
+
+The prediction interval had a target coverage of 90%.
+Observed coverage was 86.0% on the ESOL holdout and 79.6%
+on the external dataset.
+
+## Limitations
+
+Predictions do not explicitly account for temperature or pH.
+Accuracy may decrease for molecules outside the training domain,
+especially larger molecules.
+
+Retrieved literature values are provided for exploratory
+comparison. Their independence from the training and evaluation
+data has not been fully verified.
