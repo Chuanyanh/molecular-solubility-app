@@ -100,3 +100,21 @@ especially larger molecules.
 Retrieved literature values are provided for exploratory
 comparison. Their independence from the training and evaluation
 data has not been fully verified.
+
+## Model Comparison
+
+![Model comparison](model_comparison.png)
+
+The deployed GINE model (seed 42) achieved lower MAE and
+RMSE than Random Forest on the ESOL scaffold holdout.
+On the filtered AqSolDB external dataset, Random Forest
+achieved lower errors than this GINE model.
+
+## Prediction Interval Coverage
+
+![Prediction interval coverage](interval_coverage.png)
+
+CQR targets 90% coverage. Observed coverage was 86.0%
+on the ESOL holdout and 79.6% on the external dataset.
+These results indicate reduced coverage under external
+distribution shift.
