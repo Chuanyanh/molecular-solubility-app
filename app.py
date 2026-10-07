@@ -4,6 +4,7 @@ import streamlit as st
 from rdkit import Chem
 from rdkit.Chem import Draw
 from solubility_pipeline import predict_for_web
+from solubility_workflows import render_batch_prediction, render_manual_comparison
 
 st.set_page_config(
     page_title="分子水溶解度预测",
@@ -159,6 +160,9 @@ st.caption(
     "搜索一种物质，探索它的立体结构，比较两种机器学习模型的水溶解度估计。"
 )
 
+
+# WEB_FINISH_BATCH_V1
+render_batch_prediction(predict_for_web)
 
 # COMPOUND_SEARCH_V2
 from compound_library import search_compounds, load_compounds
@@ -438,12 +442,15 @@ if result is not None:
             )
             st.write(
                 "CQR（Conformalized Quantile Regression，"
-                "共形化分位数回归）使用单独的分位数模型与校准集生成区间。"
+                "保形化分位数回归）使用单独的分位数模型与校准集生成区间。"
             )
 
     # EXPERIMENTAL_REFERENCES_V1
     from experimental_references import render_experimental_references
     render_experimental_references(result)
+
+    # WEB_FINISH_MANUAL_V1
+    render_manual_comparison(result)
 
     st.subheader("结构与适用范围")
     checks = result["checks"]
@@ -514,7 +521,7 @@ with st.expander("了解预测依据 · 研究方法、模型评价与数据来�
     两个点预测模型均使用固定的 920 条 ESOL 训练记录。
 
     **预测区间**  
-    CQR（Conformalized Quantile Regression，共形化分位数回归）
+    CQR（Conformalized Quantile Regression，保形化分位数回归）
     使用单独的分位数模型与校准集构建区间。
     目标覆盖率为 90%，实际覆盖率请查看“区间的实际评价”。
     这不是当前分子有 90% 概率落入区间的保证。
