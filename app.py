@@ -151,6 +151,28 @@ button[data-baseweb="tab"][aria-selected="true"] {
     background-color: #20364d !important;
     border-radius: 8px;
 }
+
+/* WEB_FINISH_CONTRAST_V1 */
+.stApp [data-testid="stExpander"] summary {
+    background-color: #20364d !important;
+    color: #edf5ff !important;
+}
+.stApp [data-testid="stExpander"] summary p,
+.stApp [data-testid="stExpander"] summary span,
+.stApp [data-testid="stExpander"] summary svg {
+    color: #edf5ff !important;
+}
+.stApp [data-testid="stFormSubmitButton"] button,
+.stApp [data-testid="stBaseButton-secondaryFormSubmit"] {
+    background-color: #55d6ce !important;
+    border-color: #55d6ce !important;
+    color: #081827 !important;
+    font-weight: 700 !important;
+}
+.stApp [data-testid="stFormSubmitButton"] button p,
+.stApp [data-testid="stFormSubmitButton"] button span {
+    color: #081827 !important;
+}
 </style>
 <div class="lab-heading">MOLECULAR SOLUBILITY LAB</div>
 """, unsafe_allow_html=True)
