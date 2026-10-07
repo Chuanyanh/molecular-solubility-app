@@ -48,8 +48,8 @@ def appearance_html(record):
 <g stroke="#b8cede" opacity=".55"> <path d="M385 140h20 M385 180h20 M385 220h20 M385 260h20 M385 300h20"/></g>'''
         label='无色液体示意'
     return f'''<!doctype html><html lang="zh"><meta charset="utf-8"><style>
-body{{margin:0;background:#080f1d;color:#e8eef7;font-family:Arial,sans-serif}}.card{{border:1px solid #294058;border-radius:18px;padding:16px;background:radial-gradient(ellipse at center,#17314a,#080f1d)}}
-.header{{display:flex;justify-content:space-between;align-items:center}}.tag{{color:#67e4dc;font-size:13px}}svg{{width:100%;height:350px}}.note{{color:#c4d4e5;font-size:13px;line-height:1.6}}button{{background:#192b40;color:#e8eef7;border:1px solid #456078;padding:8px 12px;border-radius:9px;cursor:pointer}}
+body{{margin:0;background:#F7F5F0;color:#24332F;font-family:Arial,sans-serif}}.card{{border:1px solid #D6DDD4;border-radius:18px;padding:16px;background:#F7F5F0}}
+.header{{display:flex;justify-content:space-between;align-items:center}}.tag{{color:#246655;font-size:13px}}svg{{width:100%;height:350px}}.note{{color:#596C63;font-size:13px;line-height:1.6}}button{{background:#FFFFFF;color:#24332F;border:1px solid #D6DDD4;padding:8px 12px;border-radius:9px;cursor:pointer}}
 .surface{{animation:ripple 4s ease-in-out infinite;transform-origin:300px 238px}}@keyframes ripple{{50%{{transform:scaleY(.7)}}}}.paused .surface{{animation-play-state:paused}}@media(prefers-reduced-motion:reduce){{.surface{{animation:none}}}}
 </style><div class="card"><div class="header"><b>{name}</b><span class="tag">{label}</span></div>
 <svg viewBox="0 0 600 430" role="img" aria-label="{name}的{label}"><defs>

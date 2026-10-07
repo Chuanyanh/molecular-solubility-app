@@ -3,7 +3,7 @@ import json
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
-import streamlit as st
+from presentation import ui as st
 
 
 def render_gnn_research(data, plot_style, show_table):
@@ -47,7 +47,7 @@ def render_gnn_research(data, plot_style, show_table):
     )
     st.plotly_chart(
         fig,
-        use_container_width=True,
+        width="stretch",
         theme=None,
         key="gnn_seed_comparison"
     )
@@ -67,4 +67,4 @@ def render_gnn_research(data, plot_style, show_table):
     with st.expander('查看 GINE 三个种子平均绝对误差最大的 10 条记录'):
         cols=['ID','Name','canonical_smiles','Solubility','atom_count','size_status','GINE_seed42','GINE_seed43','GINE_seed44','GINE_three_seed_mean_abs_error','RF_refit_predicted_logS']
         show_table(external.nlargest(10,'GINE_three_seed_mean_abs_error')[cols])
-    st.info('以上指标由上传的逐分子预测核验，属于已保存研究实验。尚未通过模型文件哈希与重新推理确认它们对应当前网页部署版本。外部来源独立性仍需核查。')
+    st.info('以上指标来自保存的逐分子预测。RF/GINE 模型文件已与 Anaconda 导出版本做哈希比较，预测核对表也已检查；原始实验来源独立性仍未确认。')

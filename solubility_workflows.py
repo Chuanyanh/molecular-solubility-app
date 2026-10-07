@@ -109,7 +109,7 @@ def measurement_comparison(result, value, unit):
 
 
 def render_batch_prediction(predictor):
-    import streamlit as st
+    from presentation import ui as st
     with st.expander("批量 CSV 预测 · 上传多个分子"):
         st.caption("上传含 SMILES 列的 CSV，手动选择结构列。每批最多 200 行、文件不超过 5 MB。")
         sample = "ID,SMILES\nethanol,CCO\naspirin,CC(=O)Oc1ccccc1C(=O)O\n"
@@ -159,7 +159,7 @@ def render_batch_prediction(predictor):
 
 
 def render_manual_comparison(result):
-    import streamlit as st
+    from presentation import ui as st
     structure = result["canonical_smiles"]
     token = hashlib.sha256(structure.encode()).hexdigest()[:16]
     with st.expander("手动输入实验值 · 与当前分子的预测比较"):

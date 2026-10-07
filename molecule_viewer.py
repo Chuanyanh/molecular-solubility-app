@@ -5,7 +5,7 @@ from rdkit import Chem
 from rdkit.Chem import AllChem
 
 @lru_cache(maxsize=64)
-def molecule_html(smiles):
+def molecule_html(smiles, english=False):
     mol = Chem.MolFromSmiles(smiles)
     if mol is None:
         raise ValueError("无法解析分子结构。")
@@ -99,4 +99,10 @@ try {
 </body>
 </html>
 """
+    if english:
+        import json as _json
+        translations = _json.loads((Path(__file__).resolve().parent / "locales" / "en.json").read_text())
+        for key in sorted(translations, key=len, reverse=True):
+            template = template.replace(key, translations[key])
+    template = template.replace("#080d18", "#F7F5F0").replace("#e9eff8", "#24332F").replace("#19263b", "#FFFFFF").replace("#35465e", "#D6DDD4").replace("#284461", "#EAF0E8").replace("#a9b9ce", "#596C63")
     return template.replace("__LIBRARY__", js).replace("__SDF__", sdf)

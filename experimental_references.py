@@ -5,7 +5,7 @@ import math
 
 import pandas as pd
 from rdkit import Chem
-import streamlit as st
+from presentation import ui as st
 
 DATA_PATH = Path(__file__).resolve().parent / "data_library" / "experimental_references.csv"
 

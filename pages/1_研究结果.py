@@ -6,87 +6,12 @@ import zipfile
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
-import streamlit as st
+from presentation import ui as st
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data_research"
-st.set_page_config(page_title="研究结果 · 小分子水溶解度", page_icon="📊", layout="wide")
-st.markdown("""<style>
-.stApp {background: radial-gradient(ellipse at top left, #152e46, #080f1d 65%); color:#e8eef7;}
-[data-testid="stHeader"] {background:transparent;}
-h1,h2,h3 {color:#eff7ff !important;}
-[data-testid="stCaptionContainer"] {color:#b5c8d9;}
-[data-testid="stMetric"] {background:#132237;border:1px solid #294058;border-radius:16px;padding:18px;}
-[data-testid="stMetricValue"] {color:#67e4dc;}
-button[data-baseweb="tab"],
-button[data-baseweb="tab"] p {
-    color: #edf5ff !important;
-    font-size: 17px !important;
-    font-weight: 600 !important;
-}
-button[data-baseweb="tab"] {
-    background-color: #132237 !important;
-    border-radius: 8px 8px 0 0;
-    padding: 12px 18px !important;
-}
-button[data-baseweb="tab"][aria-selected="true"],
-button[data-baseweb="tab"][aria-selected="true"] p {
-    color: #67e4dc !important;
-    background-color: #20364d !important;
-}
-[data-testid="stCaptionContainer"],
-[data-testid="stCaptionContainer"] p {
-    color: #c4d4e5 !important;
-}
-/* 指标卡片上方的标题 */
-[data-testid="stMetricLabel"],
-[data-testid="stMetricLabel"] * {
-    color: #edf5ff !important;
-    font-weight: 600 !important;
-}
-
-/* 页面说明文字 */
-[data-testid="stCaptionContainer"],
-[data-testid="stCaptionContainer"] * {
-    color: #c4d4e5 !important;
-}
-/* 左侧导航栏背景 */
-[data-testid="stSidebar"] {
-    background-color: #101e30 !important;
-    border-right: 1px solid #294058;
-}
-
-/* 导航栏文字 */
-[data-testid="stSidebar"] * {
-    color: #edf5ff !important;
-}
-
-/* 当前选中的页面 */
-[data-testid="stSidebarNav"] a[aria-current="page"] {
-    background-color: #20364d !important;
-    border-radius: 8px;
-}
-/* 下载按钮：绿色背景 */
-[data-testid="stDownloadButton"] button {
-    background-color: #67e4b0 !important;
-    color: #08251c !important;
-    border: 1px solid #67e4b0 !important;
-    border-radius: 10px !important;
-    font-weight: 600 !important;
-}
-
-/* 下载按钮文字 */
-[data-testid="stDownloadButton"] button * {
-    color: #08251c !important;
-}
-
-/* 鼠标放上去时 */
-[data-testid="stDownloadButton"] button:hover {
-    background-color: #8af0c5 !important;
-    border-color: #8af0c5 !important;
-}
-</style>""", unsafe_allow_html=True)
-st.title("小分子水溶解度 · 研究结果")
+from presentation import heading, choose
+heading("RESEARCH EVIDENCE", choose("研究结果与证据", "Results, evidence & limitations"), choose("同一份数据如何评价模型；换一份数据又会发生什么。", "How models perform on a fixed benchmark—and what changes beyond it."), "chart")
 st.write("研究问题：同一模型遇到训练时未见过的分子骨架，预测表现如何变化？")
 st.caption("本页面展示上传文件中已保存的结果及由预测表重新计算的指标，不在网页中重新训练模型。")
 
@@ -200,7 +125,7 @@ with tabs[2]:
     r2=float(1-(err**2).sum()/((external.measured_logS-external.measured_logS.mean())**2).sum())
     a,b,c=st.columns(3)
     a.metric("外部 MAE · logS",f"{mae:.3f}");b.metric("外部 RMSE · logS",f"{rmse:.3f}");c.metric("外部 R²",f"{r2:.3f}")
-    st.info("这些指标由上传的 cqr_current_env_external_intervals.csv 中 predicted_logS 列重算。原始外部预测模型与当前网页 RF 模型的版本一致性尚未核对，因此不将其直接标为当前部署模型的外部性能。")
+    st.info("这些指标由 cqr_current_env_external_intervals.csv 的历史 predicted_logS 列重算；本页不将这一历史列标为当前部署 RF 的评价。当前部署模型的比较见研究报告及 GINE 面板。")
     fig=go.Figure(go.Scattergl(x=external.measured_logS,y=external.predicted_logS,mode="markers",text=external.ID,
         marker=dict(size=4,opacity=.35,color="#67e4dc"),hovertemplate="%{text}<br>参考 logS=%{x:.3f}<br>预测 logS=%{y:.3f}<extra></extra>"))
     lo=min(external.measured_logS.min(),external.predicted_logS.min());hi=max(external.measured_logS.max(),external.predicted_logS.max())
@@ -241,8 +166,8 @@ with tabs[4]:
     st.write("内部基准与分子表示比较直接摘自 01_explore_ESOL-2.ipynb 已保存的表格输出（约三位小数），本次没有重新训练。划分比较采用已执行单元格输出：骨架 RF MAE 0.597、RMSE 0.806；早期 markdown 中的 0.596／0.805 未用来覆盖运行输出。")
     st.write("五折指标的简单平均与将所有折外预测合并后计算的指标不同。当前五折 RF 平均 MAE 为 0.591，Notebook 合并折外 MAE 为 0.595，两者需要分别解释。")
     st.write("原 Notebook 环境：Python 3.9.12、scikit-learn 1.0.2、RDKit 2025.9.2；云端网页使用的环境不同，展示旧实验时保留其来源。02 notebook 为预测示例，示例分子不计入独立模型测试指标。")
-    st.subheader("尚待补齐的研究证据")
-    st.markdown("- 普通梯度提升的随机／骨架留出比较。\n- 当前部署 RF/GNN 与外部评价的模型版本核对。\n- 原始实验条件与来源独立性核查。\n- 最终研究报告、海报和英文演讲材料。")
+    st.subheader("证据状态与后续问题")
+    st.markdown("- 已完成：模型文件比较、预测核对、研究报告与中英展示。\n- 仍待核查：原始实验条件与来源独立性。\n- 可选扩展：普通梯度提升的随机／骨架留出比较。")
     buffer=io.BytesIO()
     with zipfile.ZipFile(buffer,"w",zipfile.ZIP_DEFLATED) as archive:
         for path in sorted(DATA.glob("*.csv")): archive.write(path,arcname="data_research/"+path.name)
