@@ -118,3 +118,9 @@ CQR targets 90% coverage. Observed coverage was 86.0%
 on the ESOL holdout and 79.6% on the external dataset.
 These results indicate reduced coverage under external
 distribution shift.
+
+## Research Report
+
+[Read the full research report](RESEARCH_REPORT.md)
+
+[Download model comparison data](model_comparison.csv)
