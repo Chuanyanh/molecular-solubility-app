@@ -173,6 +173,12 @@ button[data-baseweb="tab"][aria-selected="true"] {
 .stApp [data-testid="stFormSubmitButton"] button span {
     color: #081827 !important;
 }
+/* 提高提示框文字对比度 */
+.stApp [data-testid="stAlert"] p,
+.stApp [data-testid="stAlert"] li,
+.stApp [data-testid="stAlertContent"] {
+    color: #edf5ff !important;
+}
 </style>
 <div class="lab-heading">MOLECULAR SOLUBILITY LAB</div>
 """, unsafe_allow_html=True)
