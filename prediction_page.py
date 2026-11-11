@@ -332,7 +332,7 @@ if result is not None:
     if checks["warnings"]:
         for warning in checks["warnings"]:
             st.warning(warning)
-    else:
+    elif checks["max_training_similarity"] > 1 / 3:
         st.info("未触发已有范围检查；这不代表预测一定可靠。")
 
     with st.expander("查看分子描述符"):
