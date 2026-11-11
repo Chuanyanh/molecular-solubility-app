@@ -202,3 +202,20 @@ with st.expander(choose("分组 CQR 实验", "Grouped CQR experiment")):
         ))
     else:
         st.info(choose("结果表尚未上传。", "The results table has not been uploaded."))
+
+rf_external_path = grouped_cqr_path.with_name(
+    "rf_external_current_vs_historical.csv"
+)
+
+with st.expander(choose("RF 外部验证", "External RF validation")):
+    if rf_external_path.is_file():
+        st.dataframe(pd.read_csv(rf_external_path).round(4), hide_index=True)
+        st.caption(choose(
+            "两行使用相同的 6,578 条 AqSolDB 记录。"
+            "当前网页 RF 使用部署模型重新计算，历史 RF 来自已保存的预测。",
+            "Both rows use the same 6,578 AqSolDB records. "
+            "Current app RF was recomputed with the app model. "
+            "Historical RF uses archived predictions.",
+        ))
+    else:
+        st.info(choose("结果表尚未上传。", "The results table has not been uploaded."))
