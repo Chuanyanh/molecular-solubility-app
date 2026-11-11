@@ -24,7 +24,7 @@ model_path = (
 prediction_bundle = joblib.load(model_path)
 
 fingerprint_generator = rdFingerprintGenerator.GetMorganGenerator(
-    radius=2, fpSize=512, includeChirality=False
+    radius=2, fpSize=2048, includeChirality=False
 )
 
 training_smiles = prediction_bundle["training_smiles"]
