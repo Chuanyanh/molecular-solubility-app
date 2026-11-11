@@ -1,3 +1,4 @@
+
 import json
 import pandas as pd
 from presentation import ui as st, heading, choose, tr
@@ -308,6 +309,14 @@ if result is not None:
 
     st.subheader("结构与适用范围")
     checks = result["checks"]
+        if checks["max_training_similarity"] <= 1 / 3:
+        st.warning(choose(
+            "这个分子与训练集中最相似的分子的 Tanimoto 相似度也不超过 1/3。"
+            "在 ESOL 和 AqSolDB 的低相似度组中，CQR 区间的实际覆盖率均低于 90% 目标。",
+            "The maximum Tanimoto similarity to the training set is at most 1/3. "
+            "Observed CQR coverage was below the 90% target in the low-similarity "
+            "groups of both ESOL and AqSolDB.",
+        ))
     st.write(
         f"原子数：{checks['atom_count']}；"
         f"最大训练集结构相似度："
