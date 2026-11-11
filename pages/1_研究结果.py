@@ -177,3 +177,28 @@ with tabs[4]:
         if path.exists():
             st.download_button(f"下载研究记录：{name}",path.read_bytes(),file_name=name,mime="application/x-ipynb+json",key=name)
     st.caption("表中 source 和 source_cell_1_based 字段保留原 notebook 名称及从 1 开始的单元格位置。")
+
+from pathlib import Path
+import pandas as pd
+from presentation import choose, ui as st
+
+grouped_cqr_path = (
+    Path(__file__).resolve().parents[1]
+    / "data_pipeline"
+    / "cqr_grouped_vs_global_evaluation.csv"
+)
+
+with st.expander(choose("分组 CQR 实验", "Grouped CQR experiment")):
+    if grouped_cqr_path.is_file():
+        st.dataframe(pd.read_csv(grouped_cqr_path).round(3), hide_index=True)
+        st.caption(choose(
+            "以分位数模型拟合集为参照，按最大 Tanimoto 相似度是否 ≤ 1/3 分组。"
+            "分组校准提高了低相似度组的覆盖率，同时增加了区间宽度。"
+            "高于切点组的覆盖率下降。网页预测使用全局 CQR。",
+            "Groups use a maximum Tanimoto similarity cutoff of 1/3 against "
+            "the quantile models' fitting set. Grouped calibration increased "
+            "coverage and interval width in the low-similarity group. Coverage "
+            "decreased above the cutoff. The app uses global CQR for predictions.",
+        ))
+    else:
+        st.info(choose("结果表尚未上传。", "The results table has not been uploaded."))
