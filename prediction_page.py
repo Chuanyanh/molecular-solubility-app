@@ -303,6 +303,41 @@ if result is not None:
     # EXPERIMENTAL_REFERENCES_V1
     from experimental_references import render_experimental_references
     render_experimental_references(result)
+    if Chem.MolToInchiKey(Chem.MolFromSmiles(result["canonical_smiles"])).split("-")[0] == "XMAYWYJOQHXEEK":
+        import numpy as np
+        import plotly.graph_objects as go
+
+        # Selected equilibrium measurements for ketoconazole free base at 25 °C.
+        ph_points = np.array([3.58, 3.81, 4.28, 4.48, 4.99, 7.12, 7.23, 7.72, 8.49])
+        solubility = np.array([3425, 1931, 729, 345, 175, 5, 4, 2, 2])
+        with st.expander(choose("酮康唑的 pH 与溶解度", "Ketoconazole pH–solubility"), expanded=True):
+            selected_ph = st.slider("pH", 3.58, 8.49, 7.23, 0.01, key="ketoconazole_ph")
+            log_values = np.log10(solubility)
+            estimate = 10 ** np.interp(selected_ph, ph_points, log_values)
+            measured = np.isclose(ph_points, selected_ph, rtol=0, atol=1e-9).any()
+            label = choose("文献实测", "Measured") if measured else choose("对数插值", "Log-scale interpolation")
+            st.metric(label, f"{estimate:,.3g} mg/L")
+
+            grid = np.sort(np.r_[np.linspace(ph_points[0], ph_points[-1], 200), ph_points])
+            fig = go.Figure()
+            fig.add_scatter(x=grid, y=10 ** np.interp(grid, ph_points, log_values),
+                            mode="lines", line=dict(dash="dash", color="#26776E"),
+                            name=choose("实测点之间的插值", "Interpolation"))
+            fig.add_scatter(x=ph_points, y=solubility, mode="markers",
+                            name=choose("文献实测点", "Published measurements"),
+                            marker=dict(color="#31618E", size=8))
+            fig.add_vline(x=selected_ph, line_dash="dot", line_color="#B46B25")
+            fig.update_layout(xaxis_title="pH", yaxis_title=choose("溶解度（mg/L）", "Solubility (mg/L)"),
+                              yaxis_type="log", height=340)
+            st.plotly_chart(fig, use_container_width=True)
+            st.caption(choose(
+                "酮康唑游离碱，25 °C，盐酸调节 pH。使用表 1 的部分实测点。"
+                "滑块只更新这张文献曲线，尤其在 4.99–7.12 之间缺少所选实测点，插值仅作示意。",
+                "Ketoconazole free base at 25 °C, with pH adjusted using HCl. Selected measurements "
+                "from Table 1. The slider updates this literature curve. Interpolation is illustrative, "
+                "especially across the gap between pH 4.99 and 7.12.",
+            ))
+            st.markdown("[Table 1 · Published pH–solubility data](https://pmc.ncbi.nlm.nih.gov/articles/PMC8957230/)")
 
     # WEB_FINISH_MANUAL_V1
     render_manual_comparison(result)
